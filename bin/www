@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+import http from 'http'
+import app from '../'
+
+app.set('port', process.env.APP_PORT)
+
+var server = http.createServer(app)
+
+server.listen(process.env.APP_PORT)
