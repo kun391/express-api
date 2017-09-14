@@ -3,18 +3,19 @@
 import BaseController from './BaseController'
 
 class JobController extends BaseController {
-  constructor () {
-    super()
+  constructor (request, response) {
+    super(request, response)
   }
 
-  startJob (request, response) {
-    console.log(this)
-    response.json({data: true})
+  startJob () {
+    console.log(this.request.post())
+    console.log(this.request.collect(['ahaha']))
+    this.response.json({data: true})
   }
 
-  restartJob (request, response) {
-    response.json({data: true})
+  restartJob () {
+    this.response.json({data: true})
   }
 }
 
-module.exports = new JobController()
+module.exports = JobController

@@ -5,10 +5,10 @@ import JobController from './Controllers/JobController'
 Router.group([(req, res, next) => { next() }, (req, res, next) => { next() }], (router) => {
   router.get('/start', (req, res, next) => {
     next()
-  }, JobController.startJob)
+  }, (req, res) => new JobController(req, res).startJob())
   router.get('/restart', (req, res, next) => {
     next()
-  }, JobController.restartJob)
+  }, (req, res) => new JobController(req, res).restartJob())
 })
 
 Router.group([(req, res, next) => { next() }, (req, res, next) => { next() }], (router) => {
