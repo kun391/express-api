@@ -1,19 +1,15 @@
-var bookshelf = require('./connection');
-var today = (new Date()).toISOString().split('T')[0];
-var User = bookshelf.Model.extend({
-  tableName: 'users'
-}, {
-  getUsersToDay() {
-    return this.query({
-      where: {
-        birthday: today
-      }
-    }).fetchAll().then((users) => {
-      if (users !== null) {
-        return users.toArray();
-      }
-      return [];
-    });
+'use strict'
+
+import Base from './Base'
+
+export default class User extends Base {
+  static get className () {
+    return 'User'
   }
-});
-module.exports = User;
+
+  static get define () {
+    return {}
+  }
+}
+
+module.exports = User

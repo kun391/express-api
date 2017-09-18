@@ -1,6 +1,8 @@
 'use strict'
 
 import BaseController from './BaseController'
+import Base from '../../Models/Base'
+import User from '../../Models/User'
 
 class JobController extends BaseController {
   constructor (request, response) {
@@ -8,8 +10,8 @@ class JobController extends BaseController {
   }
 
   startJob () {
-    console.log(this.request.post())
-    console.log(this.request.collect(['ahaha']))
+    const sss = (User.model())
+    console.log(sss)
     this.response.json({data: true})
   }
 

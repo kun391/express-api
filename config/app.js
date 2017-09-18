@@ -1,16 +1,19 @@
-const config = {}
+'use strict'
 
-export config.db = {
-  MySQL: {
+import dotenv from 'dotenv'
+dotenv.config()
+
+export const DB = {
+  MYSQL: {
     HOST: process.env.DB_HOST,
     PORT: process.env.DB_PORT,
     USERNAME: process.env.DB_USER,
     PASSWORD: process.env.DB_PASSWORD,
-    DB: process.env.DB_DATABASE_NAME
+    DB_NAME: process.env.DB_DATABASE_NAME
   }
 }
 
-export config.notification = {
+export const NOTIFICATION = {
   apn: {
     key: `${__dirname}/${process.env.FILE_NAME_KEY_PEM}`,
     cert: `${__dirname}/${process.env.FILE_NAME_CERT_PEM}`, // eslint-disable-line
