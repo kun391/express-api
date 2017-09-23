@@ -21,34 +21,7 @@ class Request extends Macroable {
      * @attribute request
      * @type {Object}
      */
-    this.request = request
-    /**
-     * A merged object of get and post
-     *
-     * @type {Object}
-     */
-    this._all = this.get()
-
-    /**
-     * Reference to request body
-     *
-     * @type {Object}
-     */
-    this._body = null
-
-    /**
-     * Reference to raw body
-     *
-     * @type {Object}
-     */
-    this._raw = null
-
-    /**
-     * The qs object
-     *
-     * @type {Object}
-     */
-    this._qs = null
+    this._request = request
   }
 
   /**
@@ -59,22 +32,7 @@ class Request extends Macroable {
    * @return {Object}
    */
   get body () {
-    return this._body || {}
-  }
-
-  /**
-   * Mutate request body, this method will
-   * mutate the `all` object as well
-   *
-   * @method body
-   *
-   * @param  {Object} body
-   *
-   * @return {void}
-   */
-  set body (body) {
-    this._body = body
-    this._all = _.merge({}, this.get(), body)
+    return this._request.body || {}
   }
 
   /**
@@ -90,10 +48,7 @@ class Request extends Macroable {
    * ```
    */
   get () {
-    if (!this._qs) {
-      this._qs = nodeReq.get(this.request)
-    }
-    return this._qs
+    return nodeReq.get(this._request)
   }
 
   /**
@@ -115,7 +70,7 @@ class Request extends Macroable {
    * ```
    */
   post () {
-    return this.body
+    return this._request.body
   }
 
   /**
@@ -132,18 +87,7 @@ class Request extends Macroable {
    * ```
    */
   all () {
-    return this._all
-  }
-
-  /**
-   * Returns request raw body
-   *
-   * @method raw
-   *
-   * @return {Object}
-   */
-  raw () {
-    return this._raw
+    return _.merge(this.get(), this.post())
   }
 
   /**
@@ -252,7 +196,7 @@ class Request extends Macroable {
    * @return {String} Request method always in uppercase
    */
   intended () {
-    return nodeReq.method(this.request)
+    return nodeReq.method(this._request)
   }
 
   /**
@@ -263,7 +207,7 @@ class Request extends Macroable {
    * @return {Object}
    */
   headers () {
-    return nodeReq.headers(this.request)
+    return nodeReq.headers(this._request)
   }
 
   /**
@@ -277,7 +221,7 @@ class Request extends Macroable {
    * @return {Mixed} Actual value or the default value, falling back to `null`
    */
   header (key, defaultValue) {
-    return nodeReq.header(this.request, key) || defaultValue
+    return nodeReq.header(this._request, key) || defaultValue
   }
 
   /**
@@ -288,7 +232,7 @@ class Request extends Macroable {
    * @return {String}
    */
   url () {
-    return nodeReq.url(this.request)
+    return nodeReq.url(this._request)
   }
 
   /**
@@ -299,7 +243,7 @@ class Request extends Macroable {
    * @return {String}
    */
   originalUrl () {
-    return nodeReq.originalUrl(this.request)
+    return nodeReq.originalUrl(this._request)
   }
 
   /**
@@ -324,7 +268,7 @@ class Request extends Macroable {
    * ```
    */
   is (types) {
-    return nodeReq.is(this.request, types)
+    return nodeReq.is(this._request, types)
   }
 
   /**
@@ -340,7 +284,7 @@ class Request extends Macroable {
    * @return {String|Array}
    */
   accepts (types) {
-    return nodeReq.accepts(this.request, types) || ''
+    return nodeReq.accepts(this._request, types) || ''
   }
 
   /**
@@ -353,7 +297,7 @@ class Request extends Macroable {
    * @return {Array}
    */
   types () {
-    return nodeReq.types(this.request)
+    return nodeReq.types(this._request)
   }
 
   /**
@@ -368,7 +312,7 @@ class Request extends Macroable {
    * @return {String}
    */
   language (acceptedLanguages) {
-    return nodeReq.language(this.request, acceptedLanguages)
+    return nodeReq.language(this._request, acceptedLanguages)
   }
 
   /**
@@ -380,7 +324,7 @@ class Request extends Macroable {
    * @return {Array}
    */
   languages () {
-    return nodeReq.languages(this.request)
+    return nodeReq.languages(this._request)
   }
 
   /**
@@ -392,7 +336,7 @@ class Request extends Macroable {
    * @return {Boolean}
    */
   hasBody () {
-    return nodeReq.hasBody(this.request)
+    return nodeReq.hasBody(this._request)
   }
 }
 

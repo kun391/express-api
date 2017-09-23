@@ -5,6 +5,7 @@ import Sequelize from 'sequelize'
 
 const Orm = new Sequelize(DB.MYSQL.DB_NAME, DB.MYSQL.USERNAME, DB.MYSQL.PASSWORD, {
   host: DB.MYSQL.HOST,
+  port: DB.MYSQL.PORT,
   dialect: 'mysql',
 
   pool: {

@@ -1,6 +1,6 @@
 'use strict'
 
-import Orm from './orm'
+import Orm from './Orm'
 import Sequelize from 'sequelize'
 
 export default class Base {
@@ -8,12 +8,20 @@ export default class Base {
     return this.name
   }
 
-  static get define () {
+  static get Sequelize () {
+  	return Sequelize
+  }
+
+  static get attributes () {
     return {}
   }
 
+  static get options () {
+  	return {}
+  }
+
   static model () {
-    return Orm.define(this.className, this.define)
+    return Orm.define(this.className, this.attributes, this.options)
   }
 }
 

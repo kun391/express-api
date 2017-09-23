@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./bin/www",
     "lint": "./node_modules/.bin/standard",
-    "test": "jest"
+    "test": "jest",
+    "sq": "./node_modules/.bin/sequelize"
   },
   "dependencies": {
     "async": "^1.4.2",
@@ -22,18 +23,27 @@
     "debug": "~2.1.1",
     "dotenv": "^4.0.0",
     "express": "^4.4.1",
-    "express-validator": "^2.20.10",
+    "express-validation": "^1.0.2",
+    "joi": "^11.0.2",
+    "jsonwebtoken": "^8.0.1",
     "knex": "^0.8.6",
     "macroable": "^1.0.0",
     "morgan": "~1.5.1",
     "mysql2": "^1.4.2",
     "node-req": "^2.0.1",
-    "sequelize": "^4.8.4"
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-facebook-token": "^3.3.0",
+    "passport-jwt": "^3.0.0",
+    "password-hash": "^1.2.2",
+    "sequelize": "^4.8.4",
+    "sequelize-cli": "^3.0.0-3"
   },
   "devDependencies": {
     "eslint": "^3.4.0",
     "faker": "^3.1.0",
     "jest": "^21.1.0",
+    "knex": "^0.8.6",
     "nodemon": "^1.12.0",
     "standard": "^10.0.3",
     "supertest": "2.0.1",

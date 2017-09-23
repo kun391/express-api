@@ -1,29 +1,42 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import routes from './App/Http/routes'
+import routes from './app/http/routes'
 import bodyParser from 'body-parser'
-import expressValidator from 'express-validator'
+import ev from 'express-validation'
 
 dotenv.config()
 const app = express()
-app.use(bodyParser.json()) // support json encoded bodies
-app.use(bodyParser.urlencoded({extended: true})) // support encoded bodies
 
-app.use(expressValidator())
+// use parse content type, ignore form-data
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+// add middleware allow cors
 app.use(cors())
+
+// define route for system
 app.use(routes)
+
+// exception validation. To do: Write func handle all exception
+app.use((err, req, res, next) => {
+  // specific for validation errors
+  if (err instanceof ev.ValidationError) return res.status(err.status).json(err)
+
+  // other type of errors, it *might* also be a Runtime Error
+  // example handling
+  if (process.env.NODE_ENV !== 'production') {
+    return res.status(500).send(err.stack)
+  } else {
+    return res.status(500)
+  }
+})
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404
   next(err)
-})
-// no stacktraces leaked to user
-app.use((err, req, res, next) => {
-  res.status(err.status || 500)
-  console.log(err)
-  next()
 })
 
 module.exports = app

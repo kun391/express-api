@@ -1,0 +1,274 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"console.log();"
+			],
+			[
+				"con",
+				"console.log();"
+			],
+			[
+				"log",
+				"console.log();"
+			],
+			[
+				"sq",
+				"sequelize"
+			],
+			[
+				"node",
+				"node_modules"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"ecep",
+				"exception"
+			],
+			[
+				"an",
+				"announcement1"
+			],
+			[
+				"activ",
+				"activityLog2"
+			],
+			[
+				"table",
+				"tableName"
+			],
+			[
+				"tabl",
+				"tableName"
+			],
+			[
+				"enig",
+				"enigma-api"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 500.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kun/projects/enigma"
+	],
+	"file_history":
+	[
+		"/Users/kun/projects/luxe/node_modules/macroable/index.js",
+		"/Users/kun/projects/luxe/app/lib/Router.js",
+		"/Users/kun/projects/luxe/app/http/routes.js",
+		"/Users/kun/projects/luxe/app/http/validations/index.js",
+		"/Users/kun/projects/luxe/app/models/User.js",
+		"/Users/kun/projects/luxe/app/models/Base.js",
+		"/Users/kun/projects/luxe/app/http/requests/JobRequest.js",
+		"/Users/kun/projects/luxe/app/models/Orm.js",
+		"/Users/kun/projects/luxe/node_modules/sequelize/lib/sequelize.js",
+		"/Users/kun/projects/enigma/enigma-api/tests/TestCase.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Models/Manager.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Http/Controllers/V1/EmployeeLockController.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Services/EmployeeLockService.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Repositories/Eloquent/EmployeeRepository.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Models/Employee.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Repositories/Eloquent/EnigmaUserRepository.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Http/Controllers/V1/CompanyAdminController.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Services/CompanyAdminService.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Providers/ExceptionServiceProvider.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Services/GoogleOauthService.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Http/Routes/route_company_admin.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Providers/AppServiceProvider.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Exceptions/Handler.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Http/Controllers/V1/CompanyController.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Repositories/Eloquent/CompanyRepository.php",
+		"/Users/kun/projects/enigma/enigma-api/storage/logs/lumen.log",
+		"/Users/kun/projects/enigma/enigma-api/tests/AnnouncementTest.php",
+		"/Users/kun/Library/Application Support/Sublime Text 3/Packages/User/phpfmt.sublime-settings",
+		"/Users/kun/projects/enigma/enigma-api/tests/ActivityLogTest.php",
+		"/Users/kun/projects/enigma/enigma-api/database/factories/ModelFactory.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Repositories/Eloquent/BranchPrepaidScheduleRepository.php",
+		"/Users/kun/projects/enigma/enigma-api/app/Http/Controllers/V1/Controller.php",
+		"/Users/kun/projects/enigma/enigma-migration/config/app.php",
+		"/Users/kun/projects/enigma/enigma-migration/database/migrations/2017_07_05_031217_change_email_unique_condition_to_managers_table.php",
+		"/Users/kun/projects/enigma/enigma-api/build.sh",
+		"/Users/kun/projects/enigma/build.sh",
+		"/Users/kun/Downloads/luxe/app/http/routes.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "enigma.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 410.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
