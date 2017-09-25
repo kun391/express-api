@@ -3,6 +3,7 @@
 import { Request } from '../TestCase'
 import * as Helper from '../TestHelpers'
 import User from '../../app/models/User'
+import sequelize from 'sequelize'
 
 beforeEach(async (done) => {
   await User.model().destroy({where: {}})
@@ -171,7 +172,7 @@ describe('User', () => {
         .set('Authorization', `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODUsImVtYWlsIjoiam9oYW5AZ21haWwuY29tIiwiaWF0IjoxNTA2MDE1NTY1fQ.72ntd7lLht5Noe1-NeEqoEgROWswZNd0KbaY8pgXk4U`)
         .expect(401)
     })
-    it('Get success', () => {
+    it.only('Get success', () => {
       return Request.post('/auth/signup')
         .set('Accept', 'application/json')
         .send({
@@ -267,7 +268,7 @@ describe('User', () => {
             })
         })
     })
-    it('Success', () => {
+    it.only('Success', () => {
       return Request.post('/auth/signup')
         .set('Accept', 'application/json')
         .send({

@@ -2,7 +2,7 @@
 
 import BaseController from './BaseController'
 import User from '../../models/User'
-import Building from '../../models/Building'
+import BuildingModel from '../../models/Building'
 
 class UserController extends BaseController {
   async show () {
@@ -12,8 +12,9 @@ class UserController extends BaseController {
     if (parseInt(currentUser.id) !== parseInt(userId)) {
       return this.throwError(403)
     }
+    const Building = BuildingModel.model()
+    const user = await User.model().findOne({ where: { id: userId, email: currentUser.email }, include: [{model: Building, as: 'building'}] })
 
-    const user = await User.model().findOne({ where: { id: userId, email: currentUser.email } }, { include: [Building.model()] })
     if (!user) {
       return this.throwError(404)
     }
@@ -32,8 +33,12 @@ class UserController extends BaseController {
     const input = this.request.only(['building_id', 'unit_number', 'unit_size', 'unit_bedroom', 'unit_bathroom'])
 
     const user = await User.model().update(input, { where: { id: userId, email: currentUser.email } })
-    console.log(user)
-    return this.response.json({ data: user })
+
+    if (user === 0) {
+      return this.throwError(500)
+    }
+
+    return this.response.json({ data: currentUser })
   }
 }
 

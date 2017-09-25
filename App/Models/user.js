@@ -2,7 +2,9 @@
 
 import Base from './Base'
 import Building from './Building'
+import Pet from './Pet'
 import Hash from 'password-hash'
+import uuid from 'uuid/v4'
 
 export default class User extends Base {
   constructor () {
@@ -11,6 +13,7 @@ export default class User extends Base {
 
   static get attributes () {
     return {
+      uid: this.Sequelize.STRING,
       first_name: this.Sequelize.STRING,
       last_name: this.Sequelize.STRING,
       full_name: this.Sequelize.STRING,
@@ -20,8 +23,27 @@ export default class User extends Base {
       },
       password: this.Sequelize.STRING,
       phone: this.Sequelize.STRING,
-      address: this.Sequelize.STRING
+      address: this.Sequelize.STRING,
+      building_id: this.Sequelize.INTEGER,
+      unit_number: this.Sequelize.STRING,
+      unit_size: this.Sequelize.INTEGER,
+      unit_bedroom: this.Sequelize.INTEGER,
+      unit_bathroom: this.Sequelize.INTEGER
     }
+  }
+
+  static get relations () {
+    return [
+      {
+        type: 'belongsTo',
+        target: Building.model(),
+        options: { foreignKey: 'building_id', as: 'building' }
+      }, {
+        type: 'hasOne',
+        target: Pet.model(),
+        options: { foreignKey: 'user_id', as: 'pet' }
+      }
+    ]
   }
 
   static get options () {
@@ -34,17 +56,13 @@ export default class User extends Base {
         beforeCreate: (user) => {
           if (!user.facebook_id && user.password) {
             user.password = Hash.generate(user.password)
+            user.uid = uuid()
           }
         }
       },
       setterMethods: {
         verifyPassword (password) {
           this.setDataValue('password', Hash.verify(password, this.password))
-        }
-      },
-      classMethods: {
-        associate: function (models) {
-          this.hasOne(Building.model(), {foreignKey: building_id, as: 'Building'})
         }
       }
     }

@@ -3,12 +3,15 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable(
-      'buildings',
+      'pets',
       {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
+        },
+        user_id: {
+          type: Sequelize.INTEGER
         },
         created_at: {
           type: Sequelize.DATE
@@ -17,15 +20,13 @@ module.exports = {
           type: Sequelize.DATE
         },
         name: Sequelize.STRING,
-        phone: Sequelize.STRING,
-        address: Sequelize.STRING,
-        description: Sequelize.STRING,
-        admin_id: Sequelize.STRING
+        sex: Sequelize.STRING,
+        type: Sequelize.STRING
       }
     )
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('buildings')
+    return queryInterface.dropTable('pets')
   }
 }

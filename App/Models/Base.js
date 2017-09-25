@@ -20,8 +20,18 @@ export default class Base {
     return {}
   }
 
+  static get relations () {
+    return []
+  }
+
   static model () {
-    return Orm.define(this.className, this.attributes, this.options)
+    const model = Orm.define(this.className, this.attributes, this.options)
+    if (this.relations && this.relations instanceof Array) {
+      this.relations.forEach((association) => {
+        model[association.type](association.target, association.options)
+      })
+    }
+    return model
   }
 }
 

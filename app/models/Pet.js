@@ -2,13 +2,13 @@
 
 import Base from './Base'
 
-export default class Building extends Base {
+export default class Pet extends Base {
   static get attributes () {
     return {
       name: this.Sequelize.STRING,
-      description: this.Sequelize.STRING,
-      phone: this.Sequelize.STRING,
-      address: this.Sequelize.STRING
+      user_id: this.Sequelize.INTEGER,
+      sex: this.Sequelize.STRING,
+      type: this.Sequelize.STRING
     }
   }
 
@@ -17,9 +17,9 @@ export default class Building extends Base {
       timestamps: true,
       createdAt: 'created_at',
       updatedAt: 'updated_at',
-      tableName: 'buildings'
+      tableName: 'pets'
     }
   }
 }
 
-module.exports = Building
+module.exports = Pet

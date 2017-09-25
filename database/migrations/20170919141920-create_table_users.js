@@ -10,9 +10,7 @@ module.exports = {
           primaryKey: true,
           autoIncrement: true
         },
-        created_at: {
-          type: Sequelize.DATE
-        },
+        uid: Sequelize.STRING,
         created_at: {
           type: Sequelize.DATE
         },

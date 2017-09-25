@@ -1,28 +1,25 @@
-var BaseFactory = require('./BaseFactory');
-var Factory = require('rosie').Factory;
-var faker = require('faker');
-var factory = new Factory()
-  .attrs({
-    phone: () => faker.phone.phoneNumber(),
-    guid: () => faker.random.uuid(),
-    email: () => faker.internet.email(),
-    password: () => faker.internet.password(),
-    birthday: () => faker.date.past(),
-    first_name: () => faker.name.firstName(),
-    last_name: () => faker.name.lastName(),
-    name: () => faker.name.findName(),
-    avatar: () => faker.image.avatar(),
-    avatar_fb: () => faker.image.avatar(),
-    fb_info: () => faker.random.words(),
-    address: () => faker.address.streetAddress(),
-  });
+'use strict'
+
+import BaseFactory from './BaseFactory'
+import User from '../../app/models/User'
 
 class UserFactory extends BaseFactory {
-  constructor() {
-    super();
-    this._className = 'UserFactory';
-    this._model = require('../../lib/models/user');
-    this._ftr = factory;
+  static get model () {
+    return User.model()
+  }
+
+  static get defaults () {
+    return {
+      phone: this.faker.phone.phoneNumber(),
+      uid: this.faker.random.uuid(),
+      email: this.faker.internet.email(),
+      password: this.faker.internet.password(),
+      first_name: this.faker.name.firstName(),
+      last_name: this.faker.name.lastName(),
+      full_name: this.faker.name.findName(),
+      address: this.faker.address.streetAddress()
+    }
   }
 }
-module.exports = UserFactory;
+
+module.exports = UserFactory

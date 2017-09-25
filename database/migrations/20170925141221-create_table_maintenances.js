@@ -3,29 +3,31 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable(
-      'buildings',
+      'maintenances',
       {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
+        user_id: {
+          type: Sequelize.INTEGER
+        },
+        start_at: {
+          type: Sequelize.DATE
+        },
+        content: Sequelize.STRING,
         created_at: {
           type: Sequelize.DATE
         },
         updated_at: {
           type: Sequelize.DATE
-        },
-        name: Sequelize.STRING,
-        phone: Sequelize.STRING,
-        address: Sequelize.STRING,
-        description: Sequelize.STRING,
-        admin_id: Sequelize.STRING
+        }
       }
     )
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('buildings')
+    return queryInterface.dropTable('maintenances')
   }
 }

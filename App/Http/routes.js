@@ -18,6 +18,7 @@ import Rules from './validations'
  */
 import AuthController from './controllers/AuthController'
 import UserController from './controllers/UserController'
+import PetController from './controllers/PetController'
 
 /**
   Router.group('Group name',[Array Middlewares], Router)
@@ -48,9 +49,30 @@ Route.group([(req, res, next) => { next() }], [
 */
 route.post('/auth/signup', Validate(Rules.SignUp), (req, res) => new AuthController(req, res).signUp())
 route.post('/auth/signin', Validate(Rules.SignIn), (req, res) => new AuthController(req, res).signIn())
-route.get('/users/:userId', passport.authenticate('jwt', { session: false }), (req, res) => new UserController(req, res).show())
-route.put('/users/:userId', passport.authenticate('jwt', { session: false }), Validate(Rules.Verify), (req, res) => new UserController(req, res).verify())
-route.post('/auth/facebook', passport.authenticate('facebook-token', { session: false }), (req, res) => new AuthController(req, res).signUpFacebook())
+
+route.get(
+  '/users/:userId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => new UserController(req, res).show()
+)
+route.put(
+  '/users/:userId',
+  passport.authenticate('jwt', { session: false }),
+  Validate(Rules.Verify),
+  (req, res) => new UserController(req, res).verify()
+)
+route.post(
+  '/auth/facebook',
+  passport.authenticate('facebook-token', { session: false }),
+  (req, res) => new AuthController(req, res).signUpFacebook()
+)
+
+route.post(
+  '/pets',
+  passport.authenticate('jwt', { session: false }),
+  Validate(Rules.Pet),
+  (req, res) => new PetController(req, res).add()
+)
 // Route.group([(req, res, next) => { next() }], (route) => {
 //   route.post('/auth/signup', Validate(Rules.SignUp), (req, res) => new AuthController(req, res).signUp())
 //   route.post('/auth/signin', Validate(Rules.SignIn), (req, res) => new AuthController(req, res).signIn())

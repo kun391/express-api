@@ -1,29 +1,29 @@
-var Factory = require('rosie').Factory
+'use strict'
+
+import faker from 'faker'
+import _ from 'lodash'
 
 class BaseFactory {
-  constructor () {
-    this._className = 'BaseFactory'
-    this._model = ''
-    this._ftr = {}
+  static get model () {
+    return {}
   }
 
-  set factory (ftr) {
-    this._ftr = ftr
+  static get faker () {
+    return faker
   }
 
-  get factory () {
-    return this._ftr
+  static get defaults () {
+    return {}
   }
 
-  build (attrs, cb) {
-    let attrsDefault = this.factory.build(attrs)
-    return cb(attrsDefault)
+  static build (attrs) {
+    return _.merge(this.defaults, attrs)
   }
-  create (attrs, cb) {
-    let attrsDefault = this.factory.build(attrs)
-    new this._model(attrsDefault).save().then(function (model) {
-      return cb(model)
-    })
+
+  static async create (attrs) {
+    const attributes = await this.build(attrs)
+    return await this.model.create(attrs)
   }
 }
+
 module.exports = BaseFactory
