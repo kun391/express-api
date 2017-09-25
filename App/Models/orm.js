@@ -12,7 +12,8 @@ const Orm = new Sequelize(DB.MYSQL.DB_NAME, DB.MYSQL.USERNAME, DB.MYSQL.PASSWORD
     max: 5,
     min: 0,
     idle: 10000
-  }
+  },
+  logging: process.env.NODE_ENV === 'test' ? false : true
 })
 
 module.exports = Orm

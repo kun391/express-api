@@ -40,16 +40,11 @@ class AuthController extends BaseController {
   }
 
   async signUpFacebook () {
-    console.log(this)
-    // const currentUser = await this.currentUser
-    // const payload = {id: user.id, email: user.email}
-    // const token = jwt.sign(payload, JWT.key)
+    const user = await this.currentUser
+    const payload = {id: user.id, email: user.email}
+    const token = jwt.sign(payload, JWT.key, { expiresIn: "7d" })
 
-    // this.response.status(201).json({data: {id: user.id, accessToken: token}})
-  }
-
-  async callback() {
-    this.response.status(201).json({data : true})
+    this.response.json({data: {id: user.id, accessToken: token}})
   }
 }
 

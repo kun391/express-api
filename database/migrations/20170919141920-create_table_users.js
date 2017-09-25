@@ -26,7 +26,12 @@ module.exports = {
         email: Sequelize.STRING,
         phone: Sequelize.STRING,
         address: Sequelize.STRING,
-        facebook_id: Sequelize.STRING
+        facebook_id: Sequelize.STRING,
+        building_id: Sequelize.INTEGER,
+        unit_size: Sequelize.INTEGER,
+        unit_number: Sequelize.STRING,
+        unit_bedroom: Sequelize.INTEGER,
+        unit_bathroom: Sequelize.INTEGER
       }
     )
   },

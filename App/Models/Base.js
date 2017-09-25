@@ -9,7 +9,7 @@ export default class Base {
   }
 
   static get Sequelize () {
-  	return Sequelize
+    return Sequelize
   }
 
   static get attributes () {
@@ -17,7 +17,7 @@ export default class Base {
   }
 
   static get options () {
-  	return {}
+    return {}
   }
 
   static model () {

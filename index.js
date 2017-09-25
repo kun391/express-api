@@ -22,7 +22,7 @@ app.use(routes)
 app.use((err, req, res, next) => {
   // specific for validation errors
   if (err instanceof ev.ValidationError) return res.status(err.status).json(err)
-
+  if (err.name === 'InternalOAuthError') return res.status(err.oauthError.statusCode).json(JSON.parse(err.oauthError.data))
   // other type of errors, it *might* also be a Runtime Error
   // example handling
   if (process.env.NODE_ENV !== 'production') {

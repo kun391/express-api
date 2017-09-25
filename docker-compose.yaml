@@ -12,6 +12,7 @@ services:
   # Redis container
   dbtest:
     image: mysql
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
     ports:
       - "3307:3306"
     environment:
