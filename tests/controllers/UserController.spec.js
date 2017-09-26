@@ -172,7 +172,7 @@ describe('User', () => {
         .set('Authorization', `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODUsImVtYWlsIjoiam9oYW5AZ21haWwuY29tIiwiaWF0IjoxNTA2MDE1NTY1fQ.72ntd7lLht5Noe1-NeEqoEgROWswZNd0KbaY8pgXk4U`)
         .expect(401)
     })
-    it.only('Get success', () => {
+    it('Get success', () => {
       return Request.post('/auth/signup')
         .set('Accept', 'application/json')
         .send({
@@ -268,7 +268,7 @@ describe('User', () => {
             })
         })
     })
-    it.only('Success', () => {
+    it('Success', () => {
       return Request.post('/auth/signup')
         .set('Accept', 'application/json')
         .send({

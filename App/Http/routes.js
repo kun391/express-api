@@ -73,6 +73,12 @@ route.post(
   Validate(Rules.Pet),
   (req, res) => new PetController(req, res).add()
 )
+
+route.delete(
+  '/pets/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => new PetController(req, res).delete()
+)
 // Route.group([(req, res, next) => { next() }], (route) => {
 //   route.post('/auth/signup', Validate(Rules.SignUp), (req, res) => new AuthController(req, res).signUp())
 //   route.post('/auth/signin', Validate(Rules.SignIn), (req, res) => new AuthController(req, res).signIn())

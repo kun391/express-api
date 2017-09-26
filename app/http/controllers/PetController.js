@@ -21,22 +21,17 @@ class PetController extends BaseController {
   }
 
   async delete () {
-    const userId = this.request._request.params.userId
+    const petId = this.request._request.params.id
+
     const currentUser = await this.currentUser
 
-    if (currentUser.id.toString() !== userId.toString()) {
-      return this.throwError(403)
+    const effect = await Pet.model().destroy({ where: { id: petId, user_id: currentUser.id } })
+
+    if (effect === 0) {
+      return this.throwError(404)
     }
 
-    const input = this.request.only(['building_id', 'unit_number', 'unit_size', 'unit_bedroom', 'unit_bathroom'])
-
-    const user = await User.model().update(input, { where: { id: userId, email: currentUser.email } })
-
-    if (user === 0) {
-      return this.throwError(500)
-    }
-
-    return this.response.json({ data: currentUser })
+    return this.response.status(204).json()
   }
 }
 
