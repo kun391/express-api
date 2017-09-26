@@ -2,23 +2,10 @@
   "name": "job",
   "cwd": "./",
   "script": "job.js",
-  "error_file": "nail-job.log",
+  "error_file": "luxe-job.log",
   "autorestart": true,
   "env": {
     "NODE_ENV": "production",
     "NAIL_ENV": "development",
-    "APP_NAME": "Luxury Nail Lounge",
-    "DB_HOST": "192.168.1.242",
-    "DB_PORT": 9993,
-    "DB_USER": "tcx",
-    "DB_PASSWORD": "tcx@123",
-    "DB_DATABASE_NAME": "luxury_nail_live",
-    "PASSPHRASE": "1234",
-    "TZ": "America/Los_Angeles",
-    "FILE_NAME_CERT_PEM": "cert.pem",
-    "FILE_NAME_KEY_PEM": "key.pem",
-    "BO_DOMAIN": "http://admin.imagesnaillounge.com",
-    "FE_DOMAIN": "http://booking.imagesnaillounge.com",
-    "GCM_KEY": "AIzaSyAu2krmiVLPQsbVizN_hStEsVMY2TjrTpo"
   }
 }

@@ -11,8 +11,8 @@ class BaseController {
     }
   }
 
-  throwError (statusCode, message = '') {
-    this.response.status(statusCode).json({data: 'User not found'})
+  throwError (statusCode, message = {}) {
+    this.response.status(statusCode).json(message)
   }
 }
 

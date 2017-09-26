@@ -5,6 +5,7 @@ import Building from './Building'
 import Pet from './Pet'
 import Hash from 'password-hash'
 import uuid from 'uuid/v4'
+import ev from 'express-validation'
 
 export default class User extends Base {
   constructor () {
@@ -19,7 +20,20 @@ export default class User extends Base {
       full_name: this.Sequelize.STRING,
       facebook_id: this.Sequelize.STRING,
       email: {
-        type: this.Sequelize.STRING
+        type: this.Sequelize.STRING,
+        unique: {
+          args: true,
+          msg: 'Oops. Looks like you already have an account with this email address. Please try to login.',
+          fields: [this.Sequelize.fn('lower', this.Sequelize.col('email'))]
+        },
+        validate: {
+          isUnique: async (email) => {
+            const user = await User.model().findOne({where: {email: email}})
+            if (user) {
+              throw new Error({error: [{message: 'Email address already in use!'}]})
+            }
+          }
+        }
       },
       password: this.Sequelize.STRING,
       phone: this.Sequelize.STRING,
@@ -39,9 +53,9 @@ export default class User extends Base {
         target: Building.model(),
         options: { foreignKey: 'building_id', as: 'building' }
       }, {
-        type: 'hasOne',
+        type: 'hasMany',
         target: Pet.model(),
-        options: { foreignKey: 'user_id', as: 'pet' }
+        options: { foreignKey: 'user_id', as: 'pets' }
       }
     ]
   }

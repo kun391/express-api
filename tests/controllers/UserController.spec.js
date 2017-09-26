@@ -3,9 +3,14 @@
 import { Request } from '../TestCase'
 import * as Helper from '../TestHelpers'
 import User from '../../app/models/User'
-import sequelize from 'sequelize'
+import UserFactory from '../factories/UserFactory'
 
 beforeEach(async (done) => {
+  await User.model().destroy({where: {}})
+  done()
+})
+
+afterAll(async (done) => {
   await User.model().destroy({where: {}})
   done()
 })
@@ -42,7 +47,7 @@ describe('Authenticate', () => {
     it('Signup fail: fields required', () => {
       return Request.post('/auth/signup')
         .set('Accept', 'application/json')
-        .send({})
+        .send()
         .then((res) => {
           Helper.validate400(res)
           expect(res.body.errors.length).toBe(3)
@@ -55,6 +60,25 @@ describe('Authenticate', () => {
               // password
           expect(res.body.errors[2].messages.length).toBe(1)
           expect(res.body.errors[2].field[0]).toEqual('password')
+        })
+    })
+    it('Signup fail: fields unique', async () => {
+      await UserFactory.create({ password: '123', email: 'johan@gmail.com' })
+      return Request.post('/auth/signup')
+        .set('Accept', 'application/json')
+        .send({
+          full_name: 'Gooo',
+          email: 'johan@gmail.com',
+          password: '234222'
+        })
+        .then(async (res) => {
+          Helper.validate400(res)
+          expect(res.body.errors.length).toBe(1)
+          // email
+          expect(res.body.errors[0].messages.length).toBe(1)
+          expect(res.body.errors[0].field[0]).toEqual('email')
+          const existEmail = await User.model().count({ where: { email: 'johan@gmail.com' }})
+          expect(existEmail).toBe(1)
         })
     })
     it('Signup fail: wrong field length', () => {
